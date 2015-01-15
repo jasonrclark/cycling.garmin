@@ -6,6 +6,9 @@ if [ -d "/Volumes/GARMIN/Garmin/Activities" ]; then
     SCRIPTPATH=$(pwd -P)
     echo $SCRIPTPATH
 
+    export PATH="/usr/local/bin:$PATH"
+    echo $PATH
+
     source .secret
 
     cp /Volumes/GARMIN/Garmin/Activities/*.fit $HOME/Rides

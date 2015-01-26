@@ -18,9 +18,13 @@ if [ -d "/Volumes/GARMIN/Garmin/Activities" ]; then
     git commit -m "Ride upload" || true
     git push origin master
 
+    rm /tmp/status/*.json || true
+
     cd /Volumes/GARMIN/Garmin/Activities
     find . -name "*.fit" -exec $SCRIPTPATH/strava.sh {} \;
-
     rm *.fit
+
+    cd /tmp/status
+    find . -name "*.json" -exec curl -X POST http://cycling.robotlikes.com/strava/upload -F file=@{} -H "Authorization: $ROBOT_LIKES_TOKEN" \;
   fi
 fi

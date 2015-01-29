@@ -18,6 +18,7 @@ if [ -d "/Volumes/GARMIN/Garmin/Activities" ]; then
     git commit -m "Ride upload" || true
     git push origin master
 
+    mkdir -p /tmp/status
     rm /tmp/status/*.json || true
 
     cd /Volumes/GARMIN/Garmin/Activities
